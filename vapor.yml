@@ -1,0 +1,31 @@
+id: 18894
+name: fedca-limited
+environments:
+    production:
+        domain: fedca.co.uk
+        database: fedca-db
+        storage: fedca-uploads
+        memory: 1024
+        cli-memory: 512
+        queue-memory: 2048
+        warm: 50
+        runtime: php-7.4:al2
+        build:
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+            - 'php artisan event:cache'
+            - 'npm ci && npm run prod && rm -rf node_modules'
+    staging:
+        domain: staging.fedca.co.uk
+        database: fedca-db
+        storage: fedca-uploads
+        memory: 1024
+        cli-memory: 512
+        queues: false
+        mail: false
+        scheduler: false
+        warm: 5
+        runtime: php-7.4:al2
+        build:
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+            - 'php artisan event:cache'
+            - 'npm ci && npm run dev && rm -rf node_modules'

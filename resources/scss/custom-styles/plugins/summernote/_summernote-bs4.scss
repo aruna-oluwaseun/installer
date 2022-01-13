@@ -1,0 +1,15 @@
+@import 'summernote-icons';
+@import "elements";
+@import 'summernote-common';
+
+.note-toolbar {
+  border-radius: $border-radius $border-radius 0 0 ;
+  background: #f8f8f8;
+}
+
+.note-btn-group .note-btn {
+  border-color: $border-color;
+  padding: 0.28rem 0.65rem;
+  font-size: 13px;
+  background: $white;
+}
